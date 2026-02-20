@@ -1,0 +1,72 @@
+Código PlantUML de diagramas de componentes y navegación
+.
+.
+@startuml
+title Diagrama de Componentes - Tienda Zenitry
+
+package "Frontend" {
+[Inicio]
+[Catálogo]
+[Promociones]
+[Producto Detalle]
+[Carrito]
+[Login]
+[Menú Accesibilidad]
+}
+
+package "Servicios" {
+[Gestión Productos]
+[Gestión Usuarios]
+[Gestión Carrito]
+}
+
+package "Base de Datos" {
+[DB Productos]
+[DB Usuarios]
+[DB Compras]
+}
+
+Inicio --> Catálogo
+Inicio --> Promociones
+
+Catálogo --> Producto Detalle
+Producto Detalle --> Carrito
+
+Carrito --> Login
+Login --> Gestión Usuarios
+
+Catálogo --> Gestión Productos
+Gestión Productos --> DB Productos
+
+Gestión Usuarios --> DB Usuarios
+Gestión Carrito --> DB Compras
+
+Menú Accesibilidad --> Inicio
+Menú Accesibilidad --> Catálogo
+
+@enduml
+
+@startuml
+title Diagrama de Navegación
+
+[*] --> Inicio
+
+Inicio --> Catálogo
+Inicio --> Promociones
+
+Catálogo --> VerProducto
+VerProducto --> AgregarCarrito
+
+Promociones --> AgregarCarrito
+
+AgregarCarrito --> Carrito
+
+Carrito --> Login : si no autenticado
+Login --> Carrito : autenticación correcta
+
+Carrito --> Pago
+
+Inicio --> Accesibilidad
+Accesibilidad --> Inicio
+
+@enduml
