@@ -2,7 +2,7 @@ Código PlantUML de diagramas de componentes y navegación
 .
 .
 @startuml
-title Diagrama de Componentes - Tienda Zenitry
+title Diagrama de Componentes - Tienda Zentry
 
 package "Frontend" {
 [Inicio]
